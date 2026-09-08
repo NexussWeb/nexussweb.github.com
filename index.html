@@ -1,1364 +1,3658 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>NexusWeb | Soluciones Digitales para tu Negocio</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #0b192c;
-            --white: #ffffff;
-            --dark: #08101a;
-            --text: #cbd5e1;
-            --muted: #94a3b8;
-            --primary: #38bdf8;
-            --primary-dark: #0ea5e9;
-            --secondary: #2dd4bf;
-            --border: #1e293b;
-            --soft: #112238;
-            --whatsapp: #25d366;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background: rgba(11, 25, 44, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-
-        .nav {
-            max-width: 1150px;
-            margin: auto;
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: 1px;
-        }
-
-        .nav-brand img {
-            width: 42px;
-            height: 42px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            font-size: .85rem;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            background:
-                linear-gradient(135deg, #0b192c 0%, #112238 100%);
-            text-align: center;
-            padding: 70px 20px 65px;
-        }
-
-        .hero-logo {
-            width: 180px;
-            max-width: 75%;
-            border-radius: 14px;
-            margin-bottom: 24px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, .4);
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            color: var(--white);
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero-slogan {
-            max-width: 700px;
-            margin: auto;
-            font-size: 1.08rem;
-            color: var(--muted);
-        }
-
-        .hero-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 13px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: .25s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #0b192c;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 1px solid var(--border);
-            background: var(--soft);
-            color: var(--white);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* =========================
-           SECCIONES
-        ========================= */
-
-        section {
-            padding: 70px 20px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            color: var(--white);
-            margin-bottom: 10px;
-        }
-
-        .section-title h2 span {
-            color: var(--primary);
-        }
-
-        .section-title p {
-            color: var(--muted);
-            max-width: 650px;
-            margin: auto;
-            font-size: .95rem;
-        }
-
-        /* =========================
-           PAQUETES
-        ========================= */
-
-        .packages {
-            background: #08101a;
-        }
-
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .package {
-            background: var(--soft);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .2);
-            position: relative;
-            transition: .3s ease;
-        }
-
-        .package:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .4);
-            border-color: var(--primary);
-        }
-
-        .package.featured {
-            border: 2px solid var(--primary);
-        }
-
-        .recommended {
-            position: absolute;
-            top: -14px;
-            right: 20px;
-            background: var(--primary);
-            color: #0b192c;
-            padding: 5px 13px;
-            border-radius: 20px;
-            font-size: .7rem;
-            font-weight: 700;
-        }
-
-        .package h3 {
-            color: var(--white);
-            font-size: 1.35rem;
-            margin-bottom: 7px;
-        }
-
-        .package-description {
-            color: var(--muted);
-            font-size: .85rem;
-            margin-bottom: 18px;
-        }
-
-        .price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .price small {
-            font-size: .8rem;
-            font-weight: 500;
-            color: var(--muted);
-        }
-
-        .package ul {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .package li {
-            margin-bottom: 11px;
-            font-size: .85rem;
-            color: var(--text);
-        }
-
-        .package li::before {
-            content: "✓";
-            color: var(--secondary);
-            font-weight: 800;
-            margin-right: 9px;
-        }
-
-        .package .btn {
-            width: 100%;
-        }
-
-        /* =========================
-           SERVICIOS
-        ========================= */
-
-        .services {
-            background: var(--bg);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .service-card {
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
-            background: var(--soft);
-            transition: .25s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .service-card .icon {
-            font-size: 1.7rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card h3 {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        .service-card p {
-            font-size: .82rem;
-            color: var(--muted);
-        }
-
-        /* =========================
-           COMO FUNCIONA
-        ========================= */
-
-        .steps {
-            background: #08101a;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .step {
-            text-align: center;
-            background: var(--soft);
-            padding: 25px 20px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: #0b192c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: 800;
-        }
-
-        .step h3 {
-            font-size: .95rem;
-            color: var(--white);
-            margin-bottom: 7px;
-        }
-
-        .step p {
-            font-size: .78rem;
-            color: var(--muted);
-        }
-
-        /* =========================
-           FAQ
-        ========================= */
-
-        .faq {
-            background: var(--bg);
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .faq-item {
-            background: var(--soft);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            margin-bottom: 12px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 17px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
-            font-family: 'Montserrat', sans-serif;
-            font-size: .88rem;
-            font-weight: 700;
-            color: var(--white);
-            cursor: pointer;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: .35s ease;
-            padding: 0 20px;
-            color: var(--muted);
-            font-size: .82rem;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 250px;
-            padding: 0 20px 18px;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            background: #060d15;
-            color: white;
-            text-align: center;
-            padding: 65px 20px;
-            border-top: 1px solid var(--border);
-        }
-
-        .cta h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 12px;
-            color: var(--white);
-        }
-
-        .cta p {
-            color: var(--muted);
-            max-width: 600px;
-            margin: auto auto 25px;
-            font-size: .9rem;
-        }
-
-        .btn-whatsapp {
-            background: var(--whatsapp);
-            color: white;
-            padding: 14px 27px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            font-weight: 800;
-            font-size: .9rem;
-            transition: .25s ease;
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, .25);
-        }
-
-        /* =========================
-           WHATSAPP FLOTANTE
-        ========================= */
-
-        .whatsapp-float {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: var(--whatsapp);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            box-shadow: 0 6px 20px rgba(0,0,0,.3);
-            transition: .25s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-        }
-
-        .whatsapp-float svg {
-            width: 31px;
-            height: 31px;
-            fill: white;
-        }
-
-        /* =========================
-           REDES
-        ========================= */
-
-        .social {
-            background: var(--bg);
-            text-align: center;
-            padding: 45px 20px;
-            border-top: 1px solid var(--border);
-        }
-
-        .social h3 {
-            color: var(--white);
-            margin-bottom: 18px;
-            font-size: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border: 1px solid var(--border);
-            background: var(--soft);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: .25s ease;
-        }
-
-        .social-link:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .social-link svg {
-            width: 21px;
-            height: 21px;
-            fill: currentColor;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #050a10;
-            color: var(--muted);
-            text-align: center;
-            padding: 28px 20px;
-            font-size: .75rem;
-            border-top: 1px solid var(--border);
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .package-grid {
-                grid-template-columns: 1fr;
-                max-width: 550px;
-            }
-
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 560px) {
-
-            section {
-                padding: 55px 16px;
-            }
-
-            .hero {
-                padding: 50px 16px;
-            }
-
-            .hero-logo {
-                width: 150px;
-            }
-
-            .service-grid,
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .package {
-                padding: 25px 20px;
-            }
-        }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="NexusWeb - Páginas web, menús digitales, invitaciones, catálogos y soluciones digitales.">
+
+<title>NexusWeb - Studio Creativo</title>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+
+
+<style>
+
+:root {
+
+--bg: #07111f;
+
+--card: rgba(15, 29, 48, 0.92);
+
+--cyan: #20d8e8;
+
+--blue: #4d7cff;
+
+--pink: #d85cff;
+
+--white: #ffffff;
+
+--muted: #aebdce;
+
+--border: rgba(255,255,255,.10);
+
+--shadow: 0 18px 50px rgba(0,0,0,.28);
+
+}
+
+
+
+* {
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
+}
+
+
+
+html {
+
+scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+font-family: 'Inter', sans-serif;
+
+background:
+
+radial-gradient(circle at 15% 10%, rgba(32,216,232,.08), transparent 30%),
+
+radial-gradient(circle at 85% 20%, rgba(216,92,255,.07), transparent 28%),
+
+var(--bg);
+
+color: var(--white);
+
+line-height: 1.6;
+
+}
+
+
+
+a {
+
+color: inherit;
+
+}
+
+
+
+.container {
+
+width: min(1120px, calc(100% - 36px));
+
+margin: auto;
+
+}
+
+
+
+/* =========================
+
+NAVEGACIÓN
+
+========================== */
+
+
+
+.nav {
+
+position: sticky;
+
+top: 0;
+
+z-index: 900;
+
+background: rgba(7,17,31,.88);
+
+backdrop-filter: blur(14px);
+
+border-bottom: 1px solid var(--border);
+
+}
+
+
+
+.nav-inner {
+
+min-height: 72px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 20px;
+
+}
+
+
+
+.nav-brand {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: 1.15rem;
+
+font-weight: 800;
+
+letter-spacing: 1.5px;
+
+}
+
+
+
+.nav-brand span {
+
+color: var(--cyan);
+
+}
+
+
+
+.nav-links {
+
+display: flex;
+
+gap: 22px;
+
+align-items: center;
+
+}
+
+
+
+.nav-links a {
+
+text-decoration: none;
+
+color: var(--muted);
+
+font-size: .9rem;
+
+font-weight: 600;
+
+transition: .2s;
+
+}
+
+
+
+.nav-links a:hover {
+
+color: var(--white);
+
+}
+
+
+
+.nav-cta {
+
+background: var(--white);
+
+color: #07111f !important;
+
+padding: 9px 15px;
+
+border-radius: 10px;
+
+}
+
+
+
+/* =========================
+
+HERO
+
+========================== */
+
+
+
+.hero {
+
+min-height: 640px;
+
+display: flex;
+
+align-items: center;
+
+text-align: center;
+
+padding: 70px 0 55px;
+
+}
+
+
+
+.hero-content {
+
+max-width: 850px;
+
+margin: auto;
+
+}
+
+
+
+.logo-wrap {
+
+display: inline-block;
+
+margin-bottom: 25px;
+
+}
+
+
+
+.hero-logo {
+
+width: min(230px, 62vw);
+
+display: block;
+
+border-radius: 14px;
+
+box-shadow: 0 18px 55px rgba(32,216,232,.16);
+
+}
+
+
+
+.eyebrow {
+
+display: inline-block;
+
+padding: 7px 13px;
+
+border: 1px solid rgba(32,216,232,.25);
+
+background: rgba(32,216,232,.06);
+
+color: #9cecf2;
+
+border-radius: 999px;
+
+font-size: .78rem;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+
+text-transform: uppercase;
+
+margin-bottom: 17px;
+
+}
+
+
+
+h1 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: clamp(2.25rem, 6vw, 4.5rem);
+
+line-height: 1.04;
+
+letter-spacing: -2px;
+
+margin-bottom: 20px;
+
+}
+
+
+
+h1 span {
+
+background: linear-gradient(90deg, var(--cyan), #72a0ff, var(--pink));
+
+-webkit-background-clip: text;
+
+background-clip: text;
+
+color: transparent;
+
+}
+
+
+
+.hero p {
+
+max-width: 700px;
+
+margin: auto;
+
+color: var(--muted);
+
+font-size: 1.05rem;
+
+}
+
+
+
+.hero-actions {
+
+margin-top: 30px;
+
+display: flex;
+
+justify-content: center;
+
+gap: 12px;
+
+flex-wrap: wrap;
+
+}
+
+
+
+.btn {
+
+display: inline-flex;
+
+align-items: center;
+
+justify-content: center;
+
+gap: 9px;
+
+text-decoration: none;
+
+padding: 13px 20px;
+
+border-radius: 11px;
+
+font-weight: 700;
+
+border: 1px solid transparent;
+
+transition: .25s;
+
+cursor: pointer;
+
+}
+
+
+
+.btn-primary {
+
+background: var(--cyan);
+
+color: #06121c;
+
+box-shadow: 0 10px 30px rgba(32,216,232,.18);
+
+}
+
+
+
+.btn-primary:hover {
+
+transform: translateY(-2px);
+
+}
+
+
+
+.btn-secondary {
+
+border-color: var(--border);
+
+background: rgba(255,255,255,.03);
+
+color: var(--white);
+
+}
+
+
+
+.btn-secondary:hover {
+
+background: rgba(255,255,255,.07);
+
+}
+
+
+
+/* =========================
+
+SECCIONES
+
+========================== */
+
+
+
+section {
+
+scroll-margin-top: 90px;
+
+}
+
+
+
+.section {
+
+padding: 75px 0;
+
+}
+
+
+
+.section-heading {
+
+max-width: 700px;
+
+margin: 0 auto 40px;
+
+text-align: center;
+
+}
+
+
+
+.section-heading .label {
+
+color: var(--cyan);
+
+text-transform: uppercase;
+
+letter-spacing: 1.5px;
+
+font-size: .76rem;
+
+font-weight: 800;
+
+}
+
+
+
+.section-heading h2 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: clamp(2rem, 4vw, 3rem);
+
+margin: 8px 0 12px;
+
+}
+
+
+
+.section-heading p {
+
+color: var(--muted);
+
+}
+
+
+
+/* =========================
+
+SERVICIOS
+
+========================== */
+
+
+
+.service-grid {
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 18px;
+
+}
+
+
+
+.service-card {
+
+background: var(--card);
+
+border: 1px solid var(--border);
+
+border-radius: 18px;
+
+padding: 25px;
+
+box-shadow: var(--shadow);
+
+transition: .25s;
+
+display: flex;
+
+flex-direction: column;
+
+min-height: 265px;
+
+}
+
+
+
+.service-card:hover {
+
+transform: translateY(-4px);
+
+border-color: rgba(32,216,232,.32);
+
+}
+
+
+
+.service-icon {
+
+width: 48px;
+
+height: 48px;
+
+display: grid;
+
+place-items: center;
+
+border-radius: 13px;
+
+background: rgba(32,216,232,.08);
+
+border: 1px solid rgba(32,216,232,.16);
+
+font-size: 1.45rem;
+
+margin-bottom: 18px;
+
+}
+
+
+
+.service-card h3 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: 1.15rem;
+
+margin-bottom: 8px;
+
+}
+
+
+
+.service-card p {
+
+color: var(--muted);
+
+font-size: .92rem;
+
+flex: 1;
+
+}
+
+
+
+.service-btn {
+
+border: 0;
+
+background: none;
+
+color: var(--cyan);
+
+text-align: left;
+
+padding: 0;
+
+margin-top: 18px;
+
+cursor: pointer;
+
+font: inherit;
+
+font-weight: 800;
+
+}
+
+
+
+.service-btn:hover {
+
+text-decoration: underline;
+
+}
+
+
+
+/* =========================
+
+PAQUETES
+
+========================== */
+
+
+
+.packages {
+
+background: rgba(255,255,255,.025);
+
+border-top: 1px solid var(--border);
+
+border-bottom: 1px solid var(--border);
+
+}
+
+
+
+.package-grid {
+
+display: grid;
+
+grid-template-columns: repeat(2, 1fr);
+
+gap: 22px;
+
+max-width: 900px;
+
+margin: auto;
+
+}
+
+
+
+.package {
+
+position: relative;
+
+background: var(--card);
+
+border: 1px solid var(--border);
+
+border-radius: 20px;
+
+padding: 30px;
+
+box-shadow: var(--shadow);
+
+}
+
+
+
+.package.featured {
+
+border-color: rgba(32,216,232,.45);
+
+box-shadow: 0 20px 60px rgba(32,216,232,.10);
+
+}
+
+
+
+.package-tag {
+
+position: absolute;
+
+top: 17px;
+
+right: 17px;
+
+background: rgba(32,216,232,.10);
+
+color: #9cecf2;
+
+border: 1px solid rgba(32,216,232,.20);
+
+padding: 5px 9px;
+
+border-radius: 999px;
+
+font-size: .68rem;
+
+font-weight: 800;
+
+text-transform: uppercase;
+
+}
+
+
+
+.package h3 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: 1.35rem;
+
+}
+
+
+
+.price {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: 2.5rem;
+
+font-weight: 800;
+
+margin: 12px 0 4px;
+
+}
+
+
+
+.price small {
+
+font-family: 'Inter', sans-serif;
+
+font-size: .82rem;
+
+color: var(--muted);
+
+font-weight: 500;
+
+}
+
+
+
+.package-subtitle {
+
+color: var(--muted);
+
+font-size: .88rem;
+
+margin-bottom: 20px;
+
+}
+
+
+
+.package ul {
+
+list-style: none;
+
+display: grid;
+
+gap: 10px;
+
+margin-bottom: 24px;
+
+}
+
+
+
+.package li {
+
+color: #d7e2ed;
+
+font-size: .9rem;
+
+}
+
+
+
+.package li::before {
+
+content: "✓";
+
+color: var(--cyan);
+
+font-weight: 800;
+
+margin-right: 9px;
+
+}
+
+
+
+.package .btn {
+
+width: 100%;
+
+}
+
+
+
+.note {
+
+text-align: center;
+
+max-width: 700px;
+
+margin: 25px auto 0;
+
+color: var(--muted);
+
+font-size: .85rem;
+
+}
+
+
+
+/* =========================
+
+COMO TRABAJAMOS
+
+========================== */
+
+
+
+.process-grid {
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 18px;
+
+}
+
+
+
+.process {
+
+padding: 25px;
+
+border: 1px solid var(--border);
+
+border-radius: 17px;
+
+background: rgba(255,255,255,.025);
+
+}
+
+
+
+.number {
+
+color: var(--cyan);
+
+font-size: .8rem;
+
+font-weight: 800;
+
+letter-spacing: 1px;
+
+}
+
+
+
+.process h3 {
+
+margin: 8px 0;
+
+font-family: 'Manrope', sans-serif;
+
+}
+
+
+
+.process p {
+
+color: var(--muted);
+
+font-size: .9rem;
+
+}
+
+
+
+/* =========================
+
+FAQ
+
+========================== */
+
+
+
+.faq {
+
+max-width: 800px;
+
+margin: auto;
+
+}
+
+
+
+.faq-item {
+
+border: 1px solid var(--border);
+
+border-radius: 13px;
+
+background: var(--card);
+
+margin-bottom: 10px;
+
+overflow: hidden;
+
+}
+
+
+
+.faq-question {
+
+width: 100%;
+
+background: none;
+
+border: 0;
+
+color: var(--white);
+
+padding: 18px 20px;
+
+text-align: left;
+
+font: inherit;
+
+font-weight: 700;
+
+cursor: pointer;
+
+display: flex;
+
+justify-content: space-between;
+
+gap: 15px;
+
+}
+
+
+
+.faq-answer {
+
+max-height: 0;
+
+overflow: hidden;
+
+transition: max-height .3s ease, padding .3s ease;
+
+color: var(--muted);
+
+padding: 0 20px;
+
+font-size: .9rem;
+
+}
+
+
+
+.faq-item.active .faq-answer {
+
+max-height: 250px;
+
+padding: 0 20px 18px;
+
+}
+
+
+
+/* =========================
+
+CTA
+
+========================== */
+
+
+
+.cta {
+
+padding: 80px 0;
+
+text-align: center;
+
+}
+
+
+
+.cta-box {
+
+border: 1px solid rgba(32,216,232,.18);
+
+background:
+
+radial-gradient(circle at 50% 0%, rgba(32,216,232,.10), transparent 45%),
+
+var(--card);
+
+border-radius: 24px;
+
+padding: 55px 25px;
+
+box-shadow: var(--shadow);
+
+}
+
+
+
+.cta h2 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: clamp(2rem, 4vw, 3rem);
+
+margin-bottom: 12px;
+
+}
+
+
+
+.cta p {
+
+color: var(--muted);
+
+max-width: 620px;
+
+margin: 0 auto 25px;
+
+}
+
+
+
+/* =========================
+
+MODAL
+
+========================== */
+
+
+
+.modal {
+
+position: fixed;
+
+inset: 0;
+
+z-index: 2000;
+
+display: none;
+
+align-items: center;
+
+justify-content: center;
+
+padding: 20px;
+
+background: rgba(0,0,0,.72);
+
+backdrop-filter: blur(7px);
+
+}
+
+
+
+.modal.show {
+
+display: flex;
+
+}
+
+
+
+.modal-box {
+
+width: min(650px, 100%);
+
+max-height: 88vh;
+
+overflow-y: auto;
+
+background: #0b192a;
+
+border: 1px solid rgba(255,255,255,.12);
+
+border-radius: 20px;
+
+padding: 28px;
+
+box-shadow: 0 30px 90px rgba(0,0,0,.55);
+
+position: relative;
+
+}
+
+
+
+.modal-close {
+
+position: absolute;
+
+top: 13px;
+
+right: 15px;
+
+width: 38px;
+
+height: 38px;
+
+border-radius: 50%;
+
+border: 1px solid var(--border);
+
+background: rgba(255,255,255,.05);
+
+color: white;
+
+cursor: pointer;
+
+font-size: 1.15rem;
+
+}
+
+
+
+.modal-icon {
+
+font-size: 2rem;
+
+margin-bottom: 8px;
+
+}
+
+
+
+.modal-box h3 {
+
+font-family: 'Manrope', sans-serif;
+
+font-size: 1.65rem;
+
+padding-right: 35px;
+
+margin-bottom: 7px;
+
+}
+
+
+
+.modal-intro {
+
+color: var(--muted);
+
+margin-bottom: 20px;
+
+}
+
+
+
+.modal-list {
+
+list-style: none;
+
+display: grid;
+
+gap: 10px;
+
+margin-bottom: 23px;
+
+}
+
+
+
+.modal-list li {
+
+background: rgba(255,255,255,.035);
+
+border: 1px solid var(--border);
+
+border-radius: 10px;
+
+padding: 10px 12px;
+
+color: #d9e4ee;
+
+font-size: .9rem;
+
+}
+
+
+
+.modal-list li::before {
+
+content: "✓";
+
+color: var(--cyan);
+
+font-weight: 800;
+
+margin-right: 8px;
+
+}
+
+
+
+.modal-actions {
+
+display: flex;
+
+gap: 10px;
+
+flex-wrap: wrap;
+
+}
+
+
+
+.modal-actions .btn {
+
+flex: 1;
+
+min-width: 180px;
+
+}
+
+
+
+/* =========================
+
+WHATSAPP
+
+========================== */
+
+
+
+.whatsapp-float {
+
+position: fixed;
+
+right: 20px;
+
+bottom: 20px;
+
+z-index: 1000;
+
+width: 58px;
+
+height: 58px;
+
+display: grid;
+
+place-items: center;
+
+border-radius: 50%;
+
+background: #25d366;
+
+color: white;
+
+text-decoration: none;
+
+box-shadow: 0 12px 35px rgba(37,211,102,.30);
+
+transition: .25s;
+
+}
+
+
+
+.whatsapp-float:hover {
+
+transform: scale(1.06);
+
+}
+
+
+
+.whatsapp-float svg {
+
+width: 29px;
+
+height: 29px;
+
+fill: currentColor;
+
+}
+
+
+
+/* =========================
+
+FOOTER
+
+========================== */
+
+
+
+footer {
+
+border-top: 1px solid var(--border);
+
+padding: 30px 0;
+
+text-align: center;
+
+color: var(--muted);
+
+font-size: .82rem;
+
+}
+
+
+
+/* =========================
+
+RESPONSIVE
+
+========================== */
+
+
+
+@media (max-width: 850px) {
+
+.service-grid {
+
+grid-template-columns: repeat(2, 1fr);
+
+}
+
+
+
+.process-grid {
+
+grid-template-columns: 1fr;
+
+}
+
+}
+
+
+
+@media (max-width: 650px) {
+
+
+
+.nav-inner {
+
+min-height: 64px;
+
+}
+
+
+
+.nav-links a:not(.nav-cta) {
+
+display: none;
+
+}
+
+
+
+.service-grid,
+
+.package-grid {
+
+grid-template-columns: 1fr;
+
+}
+
+
+
+.hero {
+
+min-height: auto;
+
+padding: 55px 0 45px;
+
+}
+
+
+
+.section {
+
+padding: 60px 0;
+
+}
+
+
+
+.service-card {
+
+min-height: 230px;
+
+}
+
+
+
+.modal-box {
+
+padding: 24px 18px;
+
+}
+
+}
+
+</style>
+
 </head>
+
+
 
 <body>
 
-<!-- =========================
-     WHATSAPP FLOTANTE
-========================= -->
 
-<a
-    href="https://wa.me/5216676441391?text=Hola%20NexusWeb,%20me%20interesa%20conocer%20sus%20servicios."
-    target="_blank"
-    class="whatsapp-float"
-    title="WhatsApp">
 
-    <svg viewBox="0 0 24 24">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-    </svg>
+<!-- WHATSAPP FLOTANTE -->
+
+<a href="#"
+
+class="whatsapp-float"
+
+onclick="sendWhatsApp('Hola, me interesa conocer los servicios de NexusWeb. ¿Podrían enviarme información?'); return false;"
+
+title="WhatsApp">
+
+
+
+<svg viewBox="0 0 24 24">
+
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.272.297-1.04 1.016-1.263 1.214-.223.198-.446.223-.842.074-.396-.149-1.674-.62-3.19-1.983-1.19-1.066-1.996-2.38-2.219-2.777-.223-.396-.025-.61.173-.808.173-.173.396-.446.594-.669.198-.223.272-.372.396-.619.124-.248.074-.471-.025-.669-.099-.198-.941-2.256-1.288-3.091-.347-.818-.694-.694-.941-.706l-.818-.025c-.272 0-.718.099-1.09.495-.372.396-1.412 1.388-1.412 3.389 0 2.001 1.437 3.928 1.635 4.201.198.272 2.827 4.315 6.848 6.053.958.421 1.71.669 2.293.867.966.31 1.847.267 2.541.161.768-.124 2.356-.966 2.703-1.9.347-.942.347-1.748.248-1.917-.099-.173-.347-.272-.743-.471z"/>
+
+</svg>
 
 </a>
 
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<header>
 
-    <div class="nav">
 
-        <a href="#" class="nav-brand">
-            <img src="168530.jpg" alt="NexusWeb">
-            NEXUSWEB
-        </a>
+<!-- NAVEGACIÓN -->
 
-        <nav class="nav-links">
-            <a href="#paquetes">Paquetes</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#faq">Preguntas</a>
-        </nav>
+<nav class="nav">
 
-    </div>
+<div class="container nav-inner">
+
+
+
+<div class="nav-brand">
+
+NEXUS<span>WEB</span>
+
+</div>
+
+
+
+<div class="nav-links">
+
+<a href="#servicios">Servicios</a>
+
+<a href="#paquetes">Paquetes</a>
+
+<a href="#faq">Preguntas</a>
+
+
+
+<a href="#"
+
+class="nav-cta"
+
+onclick="sendWhatsApp('Hola, quiero cotizar un servicio de NexusWeb.'); return false;">
+
+Cotizar
+
+</a>
+
+</div>
+
+
+
+</div>
+
+</nav>
+
+
+
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+
+
+<div class="container hero-content">
+
+
+
+<div class="logo-wrap">
+
+<img src="168530.jpg"
+
+alt="Logo NexusWeb"
+
+class="hero-logo">
+
+</div>
+
+
+
+<div class="eyebrow">
+
+Studio creativo digital
+
+</div>
+
+
+
+<h1>
+
+Tu negocio merece una presencia
+
+<span>profesional en internet.</span>
+
+</h1>
+
+
+
+<p>
+
+Creamos páginas web, menús digitales, invitaciones,
+
+catálogos y soluciones digitales pensadas para que tus
+
+clientes encuentren tu negocio y puedan contactarte fácilmente.
+
+</p>
+
+
+
+<div class="hero-actions">
+
+
+
+<a href="#"
+
+class="btn btn-primary"
+
+onclick="sendWhatsApp('Hola, quiero cotizar un servicio de NexusWeb.'); return false;">
+
+Cotizar por WhatsApp
+
+</a>
+
+
+
+<a href="#servicios"
+
+class="btn btn-secondary">
+
+Ver servicios
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
 
-<section class="hero">
 
-    <img
-        src="168530.jpg"
-        alt="Logo NexusWeb"
-        class="hero-logo">
 
-    <h1>
-        Soluciones digitales para
-        <span>tu negocio</span>
-    </h1>
+<!-- SERVICIOS -->
 
-    <p class="hero-slogan">
-        Creamos páginas web, menús digitales, catálogos
-        y herramientas digitales para ayudarte
-        a presentar tu negocio de una manera profesional.
-    </p>
+<section class="section" id="servicios">
 
-    <div class="hero-buttons">
 
-        <a
-            href="#paquetes"
-            class="btn btn-primary">
-            Ver paquetes
-        </a>
 
-        <a
-            href="https://wa.me/5216676441391?text=Hola%20NexusWeb,%20me%20interesa%20un%20servicio%20y%20quisiera%20recibir%20informaci%C3%B3n."
-            target="_blank"
-            class="btn btn-outline">
-            Hablar por WhatsApp
-        </a>
+<div class="container">
 
-    </div>
+
+
+<div class="section-heading">
+
+
+
+<div class="label">
+
+Lo que podemos crear
+
+</div>
+
+
+
+<h2>
+
+Soluciones digitales para tu negocio
+
+</h2>
+
+
+
+<p>
+
+Conoce qué incluye cada servicio sin llenar la página
+
+de información innecesaria.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="service-grid">
+
+
+
+
+
+<!-- PAGINAS WEB -->
+
+<article class="service-card">
+
+
+
+<div class="service-icon">
+
+🌐
+
+</div>
+
+
+
+<h3>
+
+Páginas Web
+
+</h3>
+
+
+
+<p>
+
+Una presencia profesional para que tus clientes
+
+conozcan tu negocio, servicios y formas de contacto.
+
+</p>
+
+
+
+<button class="service-btn"
+
+onclick="openService('web')">
+
+Ver qué incluye →
+
+</button>
+
+
+
+</article>
+
+
+
+
+
+<!-- MENUS -->
+
+<article class="service-card">
+
+
+
+<div class="service-icon">
+
+🍔
+
+</div>
+
+
+
+<h3>
+
+Menús Digitales
+
+</h3>
+
+
+
+<p>
+
+Menús modernos para restaurantes, cafeterías,
+
+comida rápida y negocios de alimentos.
+
+</p>
+
+
+
+<button class="service-btn"
+
+onclick="openService('menu')">
+
+Ver qué incluye →
+
+</button>
+
+
+
+</article>
+
+
+
+
+
+<!-- INVITACIONES -->
+
+<article class="service-card">
+
+
+
+<div class="service-icon">
+
+💌
+
+</div>
+
+
+
+<h3>
+
+Invitaciones Digitales
+
+</h3>
+
+
+
+<p>
+
+Invitaciones interactivas para bodas, XV años,
+
+cumpleaños y todo tipo de eventos.
+
+</p>
+
+
+
+<button class="service-btn"
+
+onclick="openService('invitacion')">
+
+Ver qué incluye →
+
+</button>
+
+
+
+</article>
+
+
+
+
+
+<!-- CATALOGOS -->
+
+<article class="service-card">
+
+
+
+<div class="service-icon">
+
+🛍️
+
+</div>
+
+
+
+<h3>
+
+Catálogos Digitales
+
+</h3>
+
+
+
+<p>
+
+Presenta tus productos de manera ordenada y facilita
+
+que tus clientes hagan pedidos.
+
+</p>
+
+
+
+<button class="service-btn"
+
+onclick="openService('catalogo')">
+
+Ver qué incluye →
+
+</button>
+
+
+
+</article>
+
+
+
+
+
+<!-- CITAS -->
+
+<article class="service-card">
+
+
+
+<div class="service-icon">
+
+📅
+
+</div>
+
+
+
+<h3>
+
+Citas y Reservaciones
+
+</h3>
+
+
+
+<p>
+
+Soluciones sencillas para que tus clientes puedan
+
+solicitar o agendar una cita.
+
+</p>
+
+
+
+<button class="service-btn"
+
+onclick="openService('citas')">
+
+Ver qué incluye →
+
+</button>
+
+
+
+</article>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </section>
 
 
-<!-- =========================
-     PAQUETES
-========================= -->
-
-<section class="packages" id="paquetes">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Elige tu <span>paquete web</span>
-            </h2>
-
-            <p>
-                Dos opciones sencillas para que puedas tener
-                presencia profesional en internet sin complicarte.
-            </p>
-
-        </div>
 
 
-        <div class="package-grid">
+
+<!-- PAQUETES WEB -->
+
+<section class="section packages" id="paquetes">
 
 
-            <!-- ESENCIAL -->
 
-            <div class="package">
-
-                <h3>Paquete Web Esencial</h3>
-
-                <p class="package-description">
-                    Ideal para negocios que necesitan una página
-                    clara, profesional y fácil de consultar.
-                </p>
-
-                <div class="price">
-                    $1,500 <small>MXN</small>
-                </div>
-
-                <ul>
-
-                    <li>Página web profesional</li>
-
-                    <li>Diseño adaptable a celular y computadora</li>
-
-                    <li>Información de tu negocio</li>
-
-                    <li>Galería de fotografías</li>
-
-                    <li>Botones de contacto por WhatsApp</li>
-
-                    <li>Ubicación mediante Google Maps</li>
-
-                    <li>Enlaces a redes sociales</li>
-
-                    <li>Hosting incluido</li>
-
-                </ul>
-
-                <a
-                    href="https://wa.me/5216676441391?text=Hola%20NexusWeb,%20me%20interesa%20el%20Paquete%20Web%20Esencial%20de%20$1,500.%20Quisiera%20saber%20qu%C3%A9%20incluye%20y%20c%C3%B3mo%20puedo%20comenzar."
-                    target="_blank"
-                    class="btn btn-primary">
-
-                    Me interesa este paquete
-
-                </a>
-
-            </div>
+<div class="container">
 
 
-            <!-- PROFESIONAL -->
 
-            <div class="package featured">
+<div class="section-heading">
 
-                <div class="recommended">
-                    MÁS ELEGIDO
-                </div>
 
-                <h3>Paquete Web Profesional</h3>
 
-                <p class="package-description">
-                    Para negocios que quieren una presencia digital
-                    más completa, atractiva e interactiva.
-                </p>
+<div class="label">
 
-                <div class="price">
-                    $2,500 <small>MXN</small>
-                </div>
+Cotiza tu página
 
-                <ul>
+</div>
 
-                    <li>Todo lo incluido en el paquete Esencial</li>
 
-                    <li>Mayor cantidad de secciones</li>
 
-                    <li>Galería de fotografías mejor organizada</li>
+<h2>
 
-                    <li>Botones y ventanas interactivas</li>
+Paquetes Web
 
-                    <li>Secciones especiales para servicios</li>
+</h2>
 
-                    <li>Formularios o solicitudes de información</li>
 
-                    <li>Integración de redes sociales</li>
 
-                    <li>Diseño visual más personalizado</li>
+<p>
 
-                    <li>Hosting incluido</li>
+Dos opciones claras para que elijas la que mejor
 
-                </ul>
+se adapte a tu negocio.
 
-                <a
-                    href="https://wa.me/5216676441391?text=Hola%20NexusWeb,%20me%20interesa%20el%20Paquete%20Web%20Profesional%20de%20$2,500.%20Quisiera%20saber%20qu%C3%A9%20incluye%20y%20c%C3%B3mo%20puedo%20comenzar."
-                    target="_blank"
-                    class="btn btn-primary">
+</p>
 
-                    Me interesa este paquete
 
-                </a>
 
-            </div>
+</div>
 
-        </div>
 
-    </div>
+
+
+
+<div class="package-grid">
+
+
+
+
+
+<!-- ESENCIAL -->
+
+<article class="package">
+
+
+
+<h3>
+
+Web Esencial
+
+</h3>
+
+
+
+<div class="price">
+
+$1,500
+
+<small>MXN</small>
+
+</div>
+
+
+
+<p class="package-subtitle">
+
+Ideal para comenzar con una presencia profesional.
+
+</p>
+
+
+
+<ul>
+
+
+
+<li>
+
+Diseño profesional
+
+</li>
+
+
+
+<li>
+
+Adaptable a celular, tablet y computadora
+
+</li>
+
+
+
+<li>
+
+Hasta 10 fotografías
+
+</li>
+
+
+
+<li>
+
+Información de tu negocio
+
+</li>
+
+
+
+<li>
+
+Servicios o productos
+
+</li>
+
+
+
+<li>
+
+Botón directo a WhatsApp
+
+</li>
+
+
+
+<li>
+
+Redes sociales
+
+</li>
+
+
+
+<li>
+
+Ubicación con Google Maps
+
+</li>
+
+
+
+<li>
+
+Botón flotante de WhatsApp
+
+</li>
+
+
+
+<li>
+
+Animaciones visuales sencillas
+
+</li>
+
+
+
+<li>
+
+Publicación de la página
+
+</li>
+
+
+
+<li>
+
+Hosting incluido
+
+</li>
+
+
+
+</ul>
+
+
+
+<a href="#"
+
+class="btn btn-primary"
+
+onclick="sendWhatsApp('Hola, me interesa el Paquete Web Esencial de $1,500 MXN. ¿Podrían enviarme información sobre lo que incluye y cómo puedo comenzar?'); return false;">
+
+Me interesa este paquete
+
+</a>
+
+
+
+</article>
+
+
+
+
+
+<!-- PROFESIONAL -->
+
+<article class="package featured">
+
+
+
+<div class="package-tag">
+
+Más completo
+
+</div>
+
+
+
+<h3>
+
+Web Profesional
+
+</h3>
+
+
+
+<div class="price">
+
+$2,500
+
+<small>MXN</small>
+
+</div>
+
+
+
+<p class="package-subtitle">
+
+Para negocios que necesitan una página más completa e interactiva.
+
+</p>
+
+
+
+<ul>
+
+
+
+<li>
+
+Todo lo incluido en Web Esencial
+
+</li>
+
+
+
+<li>
+
+Más secciones para tu negocio
+
+</li>
+
+
+
+<li>
+
+Galería de fotografías
+
+</li>
+
+
+
+<li>
+
+Catálogo o menú interactivo
+
+</li>
+
+
+
+<li>
+
+Formularios de contacto
+
+</li>
+
+
+
+<li>
+
+Ventanas emergentes
+
+</li>
+
+
+
+<li>
+
+Más elementos interactivos
+
+</li>
+
+
+
+<li>
+
+Diseño visual más completo
+
+</li>
+
+
+
+<li>
+
+Hosting incluido
+
+</li>
+
+
+
+</ul>
+
+
+
+<a href="#"
+
+class="btn btn-primary"
+
+onclick="sendWhatsApp('Hola, me interesa el Paquete Web Profesional de $2,500 MXN. ¿Podrían enviarme información sobre lo que incluye y cómo puedo comenzar?'); return false;">
+
+Me interesa este paquete
+
+</a>
+
+
+
+</article>
+
+
+
+</div>
+
+
+
+
+
+<p class="note">
+
+¿Necesitas algo diferente?
+
+Cuéntanos tu idea y revisamos contigo la mejor opción.
+
+</p>
+
+
+
+</div>
+
+
 
 </section>
 
 
-<!-- =========================
-     SERVICIOS
-========================= -->
-
-<section class="services" id="servicios">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Nuestros <span>servicios</span>
-            </h2>
-
-            <p>
-                Creamos soluciones digitales de acuerdo con
-                las necesidades de cada cliente.
-            </p>
-
-        </div>
 
 
-        <div class="service-grid">
+
+<!-- COMO TRABAJAMOS -->
+
+<section class="section">
 
 
-            <div class="service-card">
 
-                <div class="icon">🌐</div>
-
-                <h3>Páginas Web</h3>
-
-                <p>
-                    Páginas profesionales para negocios,
-                    servicios, proyectos y marcas.
-                </p>
-
-            </div>
+<div class="container">
 
 
-            <div class="service-card">
 
-                <div class="icon">🍴</div>
-
-                <h3>Menús Digitales</h3>
-
-                <p>
-                    Menús fáciles de consultar desde celular,
-                    con fotografías, precios y contacto.
-                </p>
-
-            </div>
+<div class="section-heading">
 
 
-            <div class="service-card">
 
-                <div class="icon">🛒</div>
+<div class="label">
 
-                <h3>Catálogos</h3>
+Así de sencillo
 
-                <p>
-                    Presentación organizada de productos
-                    y servicios para tus clientes.
-                </p>
-
-            </div>
+</div>
 
 
-            <div class="service-card">
 
-                <div class="icon">📆</div>
+<h2>
 
-                <h3>Citas y Reservaciones</h3>
+¿Cómo trabajamos?
 
-                <p>
-                    Opciones para facilitar la solicitud
-                    de citas y reservaciones.
-                </p>
-
-            </div>
+</h2>
 
 
-            <div class="service-card">
 
-                <div class="icon">📋</div>
+<p>
 
-                <h3>Formularios</h3>
+Te acompañamos desde la idea hasta tener tu proyecto listo.
 
-                <p>
-                    Formularios para solicitudes,
-                    cotizaciones y contacto.
-                </p>
-
-            </div>
+</p>
 
 
-            <div class="service-card">
 
-                <div class="icon">📍</div>
-
-                <h3>Ubicación</h3>
-
-                <p>
-                    Integración de mapas para que tus
-                    clientes encuentren fácilmente tu negocio.
-                </p>
-
-            </div>
+</div>
 
 
-            <div class="service-card">
-
-                <div class="icon">💬</div>
-
-                <h3>WhatsApp</h3>
-
-                <p>
-                    Botones de contacto directo con mensajes
-                    preparados para facilitar la comunicación.
-                </p>
-
-            </div>
 
 
-            <div class="service-card">
 
-                <div class="icon">📱</div>
+<div class="process-grid">
 
-                <h3>Redes Sociales</h3>
 
-                <p>
-                    Enlaces directos hacia Facebook,
-                    Instagram, WhatsApp y otras plataformas.
-                </p>
 
-            </div>
+<div class="process">
 
-        </div>
 
-    </div>
+
+<div class="number">
+
+01 — CUÉNTANOS
+
+</div>
+
+
+
+<h3>
+
+Nos dices qué necesitas
+
+</h3>
+
+
+
+<p>
+
+Cuéntanos a qué se dedica tu negocio,
+
+qué quieres mostrar y qué servicio te interesa.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="process">
+
+
+
+<div class="number">
+
+02 — DISEÑAMOS
+
+</div>
+
+
+
+<h3>
+
+Preparamos tu proyecto
+
+</h3>
+
+
+
+<p>
+
+Organizamos la información, imágenes y funciones
+
+para crear una propuesta clara y profesional.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="process">
+
+
+
+<div class="number">
+
+03 — PUBLICAMOS
+
+</div>
+
+
+
+<h3>
+
+Tu proyecto cobra vida
+
+</h3>
+
+
+
+<p>
+
+Revisamos los detalles contigo y dejamos tu proyecto
+
+listo para que tus clientes puedan verlo.
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </section>
 
 
-<!-- =========================
-     COMO FUNCIONA
-========================= -->
-
-<section class="steps">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Trabajar con nosotros es <span>fácil</span>
-            </h2>
-
-        </div>
 
 
-        <div class="steps-grid">
+
+<!-- FAQ -->
+
+<section class="section" id="faq">
 
 
-            <div class="step">
 
-                <div class="step-number">
-                    1
-                </div>
-
-                <h3>Cuéntanos tu idea</h3>
-
-                <p>
-                    Escríbenos y dinos qué necesitas
-                    para tu negocio.
-                </p>
-
-            </div>
+<div class="container">
 
 
-            <div class="step">
 
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>Elegimos la opción</h3>
-
-                <p>
-                    Te orientamos sobre el servicio
-                    que mejor se adapta a tu proyecto.
-                </p>
-
-            </div>
+<div class="section-heading">
 
 
-            <div class="step">
 
-                <div class="step-number">
-                    3
-                </div>
+<div class="label">
 
-                <h3>Preparamos tu proyecto</h3>
+Preguntas frecuentes
 
-                <p>
-                    Trabajamos con la información,
-                    fotografías y contenido que nos proporciones.
-                </p>
-
-            </div>
+</div>
 
 
-            <div class="step">
 
-                <div class="step-number">
-                    4
-                </div>
+<h2>
 
-                <h3>Publicamos</h3>
+Antes de comenzar
 
-                <p>
-                    Tu proyecto queda listo para
-                    compartirlo con tus clientes.
-                </p>
+</h2>
 
-            </div>
 
-        </div>
 
-    </div>
+<p>
+
+Algunas preguntas que nuestros clientes pueden tener.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="faq">
+
+
+
+
+
+<div class="faq-item">
+
+
+
+<button class="faq-question"
+
+onclick="toggleFaq(this)">
+
+
+
+¿Qué necesito para comenzar?
+
+
+
+<span>
+
++
+
+</span>
+
+
+
+</button>
+
+
+
+<div class="faq-answer">
+
+
+
+Solo necesitamos conocer tu negocio,
+
+qué quieres mostrar y las imágenes, logotipo
+
+e información que quieras utilizar.
+
+Nosotros te orientamos durante el proceso.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="faq-item">
+
+
+
+<button class="faq-question"
+
+onclick="toggleFaq(this)">
+
+
+
+¿La página funciona en celular?
+
+
+
+<span>
+
++
+
+</span>
+
+
+
+</button>
+
+
+
+<div class="faq-answer">
+
+
+
+Sí. Los proyectos se diseñan para adaptarse
+
+a celulares, tablets y computadoras.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="faq-item">
+
+
+
+<button class="faq-question"
+
+onclick="toggleFaq(this)">
+
+
+
+¿El hosting está incluido?
+
+
+
+<span>
+
++
+
+</span>
+
+
+
+</button>
+
+
+
+<div class="faq-answer">
+
+
+
+Sí. El hosting está incluido en los paquetes
+
+Web Esencial y Web Profesional según las
+
+condiciones del servicio. Si posteriormente
+
+necesitas servicios adicionales, te informaremos
+
+antes de contratarlos.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="faq-item">
+
+
+
+<button class="faq-question"
+
+onclick="toggleFaq(this)">
+
+
+
+¿Puedo pedir cambios en mi proyecto?
+
+
+
+<span>
+
++
+
+</span>
+
+
+
+</button>
+
+
+
+<div class="faq-answer">
+
+
+
+Sí. Durante el desarrollo revisamos contigo
+
+los detalles del proyecto para que el resultado
+
+quede de acuerdo con lo acordado.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="faq-item">
+
+
+
+<button class="faq-question"
+
+onclick="toggleFaq(this)">
+
+
+
+¿Cómo recibo información sobre un servicio?
+
+
+
+<span>
+
++
+
+</span>
+
+
+
+</button>
+
+
+
+<div class="faq-answer">
+
+
+
+Solo pulsa el botón del servicio que te interese.
+
+WhatsApp abrirá un mensaje preparado indicando
+
+qué servicio estás consultando para que podamos
+
+atenderte más rápido.
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </section>
 
 
-<!-- =========================
-     FAQ
-========================= -->
 
-<section class="faq" id="faq">
 
-    <div class="container">
 
-        <div class="section-title">
-
-            <h2>
-                Preguntas <span>frecuentes</span>
-            </h2>
-
-        </div>
-
-
-        <div class="faq-list">
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿Cuánto tarda en estar lista una página?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    El tiempo depende del proyecto y de la
-                    información proporcionada. Una vez recibidos
-                    los datos, fotografías y contenido necesarios,
-                    te indicaremos el tiempo estimado de entrega.
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿Necesito saber programación?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    No. Nosotros nos encargamos de la parte
-                    técnica del proyecto y te orientamos durante
-                    el proceso.
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿Qué necesito proporcionar?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    Principalmente la información de tu negocio,
-                    fotografías, logotipo si cuentas con uno,
-                    datos de contacto y cualquier información
-                    que quieras mostrar.
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿Puedo pedir cambios durante el proyecto?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    Sí. Antes de publicar el proyecto podemos
-                    revisar los detalles y realizar los ajustes
-                    acordados para que el resultado sea el esperado.
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿El hosting está incluido?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    Sí. Los paquetes mostrados incluyen hosting
-                    para que puedas tener tu proyecto publicado
-                    en internet.
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item">
-
-                <button
-                    class="faq-question"
-                    onclick="toggleFaq(this)">
-
-                    ¿Puedo solicitar solamente un menú?
-
-                    <span>+</span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    Sí. También puedes solicitar servicios
-                    individuales. Escríbenos por WhatsApp y
-                    te explicaremos las opciones disponibles.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-========================= -->
+<!-- LLAMADA A LA ACCIÓN -->
 
 <section class="cta">
 
-    <h2>
-        ¿Tienes una idea para tu negocio?
-    </h2>
-
-    <p>
-        Cuéntanos qué necesitas y te ayudamos a encontrar
-        una solución digital adecuada para tu proyecto.
-    </p>
-
-    <a
-        href="https://wa.me/5216676441391?text=Hola%20NexusWeb,%20quiero%20cotizar%20un%20servicio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
-        target="_blank"
-        class="btn-whatsapp">
-
-        WhatsApp · Solicitar información
-
-    </a>
-
-</section>
 
 
-<!-- =========================
-     REDES SOCIALES
-========================= -->
-
-<section class="social">
-
-    <h3>
-        Síguenos en nuestras redes
-    </h3>
-
-    <div class="social-links">
+<div class="container">
 
 
-        <!-- WhatsApp -->
 
-        <a
-            href="https://wa.me/5216676441391"
-            target="_blank"
-            class="social-link"
-            title="WhatsApp">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
-
-        </a>
+<div class="cta-box">
 
 
-        <!-- Facebook -->
 
-        <a
-            href="https://facebook.com/profile.php?id=61593977073929"
-            target="_blank"
-            class="social-link"
-            title="Facebook">
+<h2>
 
-            <svg viewBox="0 0 24 24">
-                <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.5 0 9 1.5 9 4.71V8z"/>
-            </svg>
+¿Tienes una idea para tu negocio?
 
-        </a>
+</h2>
 
-    </div>
+
+
+<p>
+
+Cuéntanos qué necesitas. Te ayudamos a encontrar
+
+una solución digital clara, profesional y adecuada
+
+para tu proyecto.
+
+</p>
+
+
+
+<a href="#"
+
+class="btn btn-primary"
+
+onclick="sendWhatsApp('Hola, quiero contarles una idea para mi negocio y saber qué servicio me recomiendan.'); return false;">
+
+
+
+Hablar por WhatsApp
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    <p>
-        © 2026 NEXUSWEB · TODOS LOS DERECHOS RESERVADOS.
-    </p>
+
+
+<div class="container">
+
+
+
+<p>
+
+&copy; 2026 NEXUSWEB — TODOS LOS DERECHOS RESERVADOS.
+
+</p>
+
+
+
+</div>
+
+
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT FAQ
-========================= -->
+
+
+
+<!-- MODAL DE SERVICIOS -->
+
+<div class="modal"
+
+id="serviceModal"
+
+onclick="closeModalOutside(event)">
+
+
+
+<div class="modal-box">
+
+
+
+<button class="modal-close"
+
+onclick="closeService()"
+
+aria-label="Cerrar">
+
+✕
+
+</button>
+
+
+
+<div class="modal-icon"
+
+id="modalIcon">
+
+🌐
+
+</div>
+
+
+
+<h3 id="modalTitle">
+
+Servicio
+
+</h3>
+
+
+
+<p class="modal-intro"
+
+id="modalIntro">
+
+</p>
+
+
+
+<ul class="modal-list"
+
+id="modalList">
+
+</ul>
+
+
+
+<div class="modal-actions">
+
+
+
+<a href="#"
+
+class="btn btn-primary"
+
+id="modalWhatsApp">
+
+
+
+Me interesa este servicio
+
+
+
+</a>
+
+
+
+<button class="btn btn-secondary"
+
+onclick="closeService()">
+
+
+
+Cerrar
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
 
 <script>
 
-function toggleFaq(button) {
 
-    const item = button.parentElement;
 
-    item.classList.toggle("active");
+/* =========================
 
-    const symbol = button.querySelector("span");
+WHATSAPP
 
-    if (item.classList.contains("active")) {
+========================== */
 
-        symbol.textContent = "−";
 
-    } else {
 
-        symbol.textContent = "+";
+const phone = "5216676441391";
 
-    }
+
+
+function sendWhatsApp(message) {
+
+
+
+const url =
+
+"https://wa.me/" +
+
+phone +
+
+"?text=" +
+
+encodeURIComponent(message);
+
+
+
+window.open(url, "_blank");
+
+
 
 }
 
+
+
+
+
+/* =========================
+
+SERVICIOS
+
+========================== */
+
+
+
+const services = {
+
+
+
+web: {
+
+
+
+icon: "🌐",
+
+
+
+title: "Páginas Web",
+
+
+
+intro:
+
+"Creamos una página profesional para presentar tu negocio y facilitar el contacto con tus clientes.",
+
+
+
+items: [
+
+
+
+"Diseño adaptable a celular, tablet y computadora",
+
+
+
+"Información del negocio, servicios o productos",
+
+
+
+"Fotografías y contenido proporcionados por el cliente",
+
+
+
+"Botón directo a WhatsApp",
+
+
+
+"Redes sociales",
+
+
+
+"Ubicación con Google Maps",
+
+
+
+"Elementos visuales e interactivos según el paquete",
+
+
+
+"Publicación y hosting incluido en nuestros paquetes Web"
+
+
+
+]
+
+
+
+},
+
+
+
+
+
+menu: {
+
+
+
+icon: "🍔",
+
+
+
+title: "Menús Digitales",
+
+
+
+intro:
+
+"Una forma moderna de mostrar tus platillos, productos y precios desde el celular.",
+
+
+
+items: [
+
+
+
+"Menú organizado por categorías",
+
+
+
+"Fotografías de platillos o productos",
+
+
+
+"Precios y descripciones",
+
+
+
+"Botones de pedido por WhatsApp",
+
+
+
+"Horarios y datos del negocio",
+
+
+
+"Ubicación con Google Maps",
+
+
+
+"Redes sociales",
+
+
+
+"Diseño adaptable a celular"
+
+
+
+]
+
+
+
+},
+
+
+
+
+
+invitacion: {
+
+
+
+icon: "💌",
+
+
+
+title: "Invitaciones Digitales",
+
+
+
+intro:
+
+"Haz que tus invitados vivan la experiencia desde que reciben la invitación.",
+
+
+
+items: [
+
+
+
+"Diseño personalizado para el evento",
+
+
+
+"Nombre de los festejados",
+
+
+
+"Fecha, hora y lugar",
+
+
+
+"Cuenta regresiva para el evento",
+
+
+
+"Música de fondo",
+
+
+
+"Galería de fotografías",
+
+
+
+"Botón para confirmar asistencia",
+
+
+
+"Confirmación de asistencia por WhatsApp",
+
+
+
+"Ubicación con Google Maps",
+
+
+
+"Información de ceremonia y recepción",
+
+
+
+"Código de vestimenta, si se requiere",
+
+
+
+"Mesa de regalos, si aplica"
+
+
+
+]
+
+
+
+},
+
+
+
+
+
+catalogo: {
+
+
+
+icon: "🛍️",
+
+
+
+title: "Catálogos Digitales",
+
+
+
+intro:
+
+"Presenta tus productos de forma ordenada y facilita que tus clientes hagan pedidos.",
+
+
+
+items: [
+
+
+
+"Catálogo organizado por categorías",
+
+
+
+"Fotografías de productos",
+
+
+
+"Precios y descripciones",
+
+
+
+"Botones de pedido por WhatsApp",
+
+
+
+"Información de contacto",
+
+
+
+"Redes sociales",
+
+
+
+"Ubicación, cuando sea necesaria",
+
+
+
+"Diseño adaptable a celular"
+
+
+
+]
+
+
+
+},
+
+
+
+
+
+citas: {
+
+
+
+icon: "📅",
+
+
+
+title: "Citas y Reservaciones",
+
+
+
+intro:
+
+"Una solución sencilla para que tus clientes puedan solicitar una cita o reservar un servicio.",
+
+
+
+items: [
+
+
+
+"Presentación de servicios",
+
+
+
+"Horarios o disponibilidad",
+
+
+
+"Formulario de solicitud",
+
+
+
+"Datos del cliente",
+
+
+
+"Botón de contacto por WhatsApp",
+
+
+
+"Confirmación mediante WhatsApp",
+
+
+
+"Ubicación con Google Maps",
+
+
+
+"Diseño adaptable a celular"
+
+
+
+]
+
+
+
+}
+
+
+
+};
+
+
+
+
+
+/* =========================
+
+ABRIR SERVICIO
+
+========================== */
+
+
+
+function openService(key) {
+
+
+
+const service = services[key];
+
+
+
+document.getElementById("modalIcon").textContent =
+
+service.icon;
+
+
+
+document.getElementById("modalTitle").textContent =
+
+service.title;
+
+
+
+document.getElementById("modalIntro").textContent =
+
+service.intro;
+
+
+
+
+
+const list =
+
+document.getElementById("modalList");
+
+
+
+list.innerHTML = "";
+
+
+
+
+
+service.items.forEach(item => {
+
+
+
+const li =
+
+document.createElement("li");
+
+
+
+li.textContent = item;
+
+
+
+list.appendChild(li);
+
+
+
+});
+
+
+
+
+
+document.getElementById("modalWhatsApp").onclick =
+
+function(e) {
+
+
+
+e.preventDefault();
+
+
+
+sendWhatsApp(
+
+"Hola, me interesa el servicio de " +
+
+service.title +
+
+". ¿Podrían enviarme información, precios y requisitos?"
+
+);
+
+
+
+};
+
+
+
+
+
+document
+
+.getElementById("serviceModal")
+
+.classList.add("show");
+
+
+
+document.body.style.overflow = "hidden";
+
+
+
+}
+
+
+
+
+
+/* =========================
+
+CERRAR MODAL
+
+========================== */
+
+
+
+function closeService() {
+
+
+
+document
+
+.getElementById("serviceModal")
+
+.classList.remove("show");
+
+
+
+document.body.style.overflow = "";
+
+
+
+}
+
+
+
+
+
+function closeModalOutside(event) {
+
+
+
+if (event.target.id === "serviceModal") {
+
+
+
+closeService();
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+document.addEventListener(
+
+"keydown",
+
+function(event) {
+
+
+
+if (event.key === "Escape") {
+
+
+
+closeService();
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+
+
+/* =========================
+
+FAQ
+
+========================== */
+
+
+
+function toggleFaq(button) {
+
+
+
+const item =
+
+button.parentElement;
+
+
+
+const isActive =
+
+item.classList.contains("active");
+
+
+
+
+
+document
+
+.querySelectorAll(".faq-item")
+
+.forEach(faq => {
+
+
+
+faq.classList.remove("active");
+
+
+
+const span =
+
+faq.querySelector(
+
+".faq-question span"
+
+);
+
+
+
+if (span) {
+
+
+
+span.textContent = "+";
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+if (!isActive) {
+
+
+
+item.classList.add("active");
+
+
+
+const span =
+
+button.querySelector("span");
+
+
+
+if (span) {
+
+
+
+span.textContent = "−";
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
 </script>
 
+
+
 </body>
-</html>
+
+</html> 
+
